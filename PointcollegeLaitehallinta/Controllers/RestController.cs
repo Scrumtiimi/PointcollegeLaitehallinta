@@ -49,10 +49,8 @@ namespace PointcollegeLaitehallinta.RestControllers
             //muista lisätä samanlainen objecti myös varastopaikoista
             ent.Laitteets.Add(new Laitteet {
                 Laitetyypit = laitteet.Laitetyypit,
-                Laitetyyppi_uid = laitteet.Laitetyyppi_uid,
                 Lisatietoja = laitteet.Lisatietoja,
                 Tapahtumalokits = laitteet.Tapahtumalokits,
-                Varastopaikka_uid = laitteet.Varastopaikka_uid,
                 Laitenimi = laitteet.Laitenimi,
                 Sarjanumero = laitteet.Sarjanumero,
                 Merkki = laitteet.Merkki,

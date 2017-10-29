@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PointcollegeLaitehallinta.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,5 +12,6 @@ namespace PointcollegeLaitehallinta.Controllers {
 
             return View();
         }
+        
     }
 }
