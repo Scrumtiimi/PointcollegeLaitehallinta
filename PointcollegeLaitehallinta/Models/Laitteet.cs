@@ -17,7 +17,7 @@ namespace PointcollegeLaitehallinta.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Laitteet()
         {
-            this.Tapahtumalokits = new HashSet<Tapahtumalokit>();
+            this.Tapahtumalokit = new HashSet<Tapahtumalokit>();
         }
     
         public System.Guid Laite_uid { get; set; }
@@ -34,7 +34,7 @@ namespace PointcollegeLaitehallinta.Models
     
         public virtual Laitetyypit Laitetyypit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tapahtumalokit> Tapahtumalokits { get; set; }
+        public virtual ICollection<Tapahtumalokit> Tapahtumalokit { get; set; }
         public virtual Varastopaikat Varastopaikat { get; set; }
     }
 }

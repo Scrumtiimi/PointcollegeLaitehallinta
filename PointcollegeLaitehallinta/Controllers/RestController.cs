@@ -17,10 +17,10 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpGet]
         public IEnumerable<Laitteet> GetLaitteet() {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
 
             List<Laitteet> laitteet = new List<Laitteet>();
-            laitteet = ent.Laitteets.ToList();
+            laitteet = ent.Laitteet.ToList();
 
             return laitteet;
         }
@@ -29,9 +29,9 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpGet]
         public Laitteet GetLaitteet(int id) {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
 
-            var laite = (from l in ent.Laitteets
+            var laite = (from l in ent.Laitteet
                          where l.Laitetyypit.Laitetyyppi == id
                          select l).SingleOrDefault();
             return (Laitteet)laite;
@@ -41,10 +41,10 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpPost]
         public void AddLaite([FromBody] Laitteet laite) {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
 
             try {
-                var getLaite = ent.Laitteets.Count(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
+                var getLaite = ent.Laitteet.Count(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
                 //check if posted laite object doesn't contain laitetyyppi then it will create new one 
                 if(getLaite < 1) {
                     Guid LaiteUIDNew = Guid.NewGuid();
@@ -79,9 +79,9 @@ namespace PointcollegeLaitehallinta.RestControllers
 
 
 
-                    ent.Laitteets.Add(newLaite);
-                    ent.Laitetyypits.Add(newLaiteTyyppi);
-                    ent.Varastopaikats.Add(newVarastoPaikka);
+                    ent.Laitteet.Add(newLaite);
+                    ent.Laitetyypit.Add(newLaiteTyyppi);
+                    ent.Varastopaikat.Add(newVarastoPaikka);
 
                     ent.SaveChanges();
 
@@ -98,9 +98,9 @@ namespace PointcollegeLaitehallinta.RestControllers
         [Route("muutatiedot")]
         [HttpPost]
         public void ModifyLaite([FromBody] Laitteet laite) {
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
 
-            Laitteet updateLaite = ent.Laitteets.Single(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
+            Laitteet updateLaite = ent.Laitteet.Single(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
 
             if(updateLaite != null) {
                 updateLaite.Laitenimi = laite.Laitenimi;

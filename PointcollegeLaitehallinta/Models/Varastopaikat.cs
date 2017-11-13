@@ -17,7 +17,7 @@ namespace PointcollegeLaitehallinta.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Varastopaikat()
         {
-            this.Laitteets = new HashSet<Laitteet>();
+            this.Laitteet = new HashSet<Laitteet>();
         }
     
         public System.Guid Varastopaikka_uid { get; set; }
@@ -26,7 +26,7 @@ namespace PointcollegeLaitehallinta.Models
         public string Lisatietoja { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Laitteet> Laitteets { get; set; }
+        public virtual ICollection<Laitteet> Laitteet { get; set; }
         public virtual Varastot Varastot { get; set; }
     }
 }

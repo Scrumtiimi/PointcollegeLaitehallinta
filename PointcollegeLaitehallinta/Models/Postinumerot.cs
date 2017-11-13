@@ -17,7 +17,7 @@ namespace PointcollegeLaitehallinta.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Postinumerot()
         {
-            this.Henkilots = new HashSet<Henkilot>();
+            this.Henkilot = new HashSet<Henkilot>();
         }
     
         public System.Guid Postinumero_uid { get; set; }
@@ -26,6 +26,6 @@ namespace PointcollegeLaitehallinta.Models
         public string Lisatietoja { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Henkilot> Henkilots { get; set; }
+        public virtual ICollection<Henkilot> Henkilot { get; set; }
     }
 }
