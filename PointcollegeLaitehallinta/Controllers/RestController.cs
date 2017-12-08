@@ -7,17 +7,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PointcollegeLaitehallinta.RestControllers
 {
     [RoutePrefix("api/laitteet")]
+    [EnableCors(origins: "http://localhost:2490", headers: "*", methods: "*")]
     public class RestController : ApiController {
         
         [Route("")]
         [HttpGet]
         public IEnumerable<Laitteet> GetLaitteet() {
 
-            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
+            LaitehallintaEntities4 ent = new LaitehallintaEntities4();
 
             List<Laitteet> laitteet = new List<Laitteet>();
             laitteet = ent.Laitteet.ToList();
@@ -29,7 +31,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpGet]
         public Laitteet GetLaitteet(int id) {
 
-            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
+            LaitehallintaEntities4 ent = new LaitehallintaEntities4();
 
             var laite = (from l in ent.Laitteet
                          where l.Laitetyypit.Laitetyyppi == id
@@ -39,14 +41,16 @@ namespace PointcollegeLaitehallinta.RestControllers
 
         [Route("")]
         [HttpPost]
-        public void AddLaite([FromBody] Laitteet laite) {
+        
+        public HttpResponseMessage AddLaite(HttpRequestMessage request, [FromBody] Laitteet laite) {
 
-            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
+            LaitehallintaEntities4 ent = new LaitehallintaEntities4();
 
             try {
-                var getLaite = ent.Laitteet.Count(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
+
+                //var getLaite = ent.Laitteet.Count(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
                 //check if posted laite object doesn't contain laitetyyppi then it will create new one 
-                if(getLaite < 1) {
+                //if(getLaite < 1) {
                     Guid LaiteUIDNew = Guid.NewGuid();
                     Guid LaiteTyyppiUIDNew = Guid.NewGuid();
                     Guid LaiteVarastopaikkaGUID = Guid.NewGuid();
@@ -68,8 +72,13 @@ namespace PointcollegeLaitehallinta.RestControllers
 
                     Laitetyypit newLaiteTyyppi = new Laitetyypit();
                     newLaiteTyyppi.Laitetyyppi_uid = LaiteTyyppiUIDNew;
-                    newLaiteTyyppi.Laitetyyppi = laite.Laitetyypit.Laitetyyppi;
-                    newLaiteTyyppi.Laitetyyppinimi = laite.Laitetyypit.Laitetyyppinimi;
+
+                    /*
+                    These should be on react from dropdown???????
+                    If not specified then Laitetyyppi will throw nullreference. If commented database will be out of sync
+                    */
+                    //newLaiteTyyppi.Laitetyyppi = laite.Laitetyypit.Laitetyyppi;
+                    //newLaiteTyyppi.Laitetyyppinimi = laite.Laitetyypit.Laitetyyppinimi;
                     newLaiteTyyppi.Lisatietoja = laite.Lisatietoja;
 
                     //only varastopaikka_uid at the moment as otherwise there is constraint error on database
@@ -85,20 +94,20 @@ namespace PointcollegeLaitehallinta.RestControllers
 
                     ent.SaveChanges();
 
-                }
+                //}
            
             } catch (Exception e) {
                 Console.WriteLine("Tietokannasta löytyy jo kyseinen tieto", e);
             }
 
-           
+            return request.CreateResponse(HttpStatusCode.OK);
             
         }
 
         [Route("muutatiedot")]
         [HttpPost]
         public void ModifyLaite([FromBody] Laitteet laite) {
-            LaitehallintaEntities3 ent = new LaitehallintaEntities3();
+            LaitehallintaEntities4 ent = new LaitehallintaEntities4();
 
             Laitteet updateLaite = ent.Laitteet.Single(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
 

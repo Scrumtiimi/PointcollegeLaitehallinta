@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LaitehallintaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LaitehallintaModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Henkilot">
           <Key>
             <PropertyRef Name="Henkilo_uid" />
@@ -52,16 +52,6 @@
           <Property Name="Postinumero" Type="varchar" MaxLength="10" />
           <Property Name="Postitoimipaikka" Type="varchar" MaxLength="100" />
           <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Tapahtumalokit">
           <Key>
@@ -173,12 +163,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LaitehallintaModelStoreContainer">
+        <EntityContainer Name="LaitehallintaModel1StoreContainer">
           <EntitySet Name="Henkilot" EntityType="Self.Henkilot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Laitetyypit" EntityType="Self.Laitetyypit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Laitteet" EntityType="Self.Laitteet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postinumerot" EntityType="Self.Postinumerot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tapahtumalokit" EntityType="Self.Tapahtumalokit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tapahtumatyyppit" EntityType="Self.Tapahtumatyyppit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Varastopaikat" EntityType="Self.Varastopaikat" Schema="dbo" store:Type="Tables" />
@@ -208,10 +197,11 @@
             <End Role="Laitteet" EntitySet="Laitteet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LaitehallintaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="LaitehallintaModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Henkilot">
           <Key>
             <PropertyRef Name="Henkilo_uid" />
@@ -266,16 +256,6 @@
           <Property Name="Postitoimipaikka" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Henkilot" Relationship="Self.FK_Postinumero_uid" FromRole="Postinumerot" ToRole="Henkilot" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tapahtumalokit">
           <Key>
@@ -392,12 +372,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LaitehallintaEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LaitehallintaEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Henkilot" EntityType="Self.Henkilot" />
           <EntitySet Name="Laitetyypit" EntityType="Self.Laitetyypit" />
           <EntitySet Name="Laitteet" EntityType="Self.Laitteet" />
           <EntitySet Name="Postinumerot" EntityType="Self.Postinumerot" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tapahtumalokit" EntityType="Self.Tapahtumalokit" />
           <EntitySet Name="Tapahtumatyyppit" EntityType="Self.Tapahtumatyyppit" />
           <EntitySet Name="Varastopaikat" EntityType="Self.Varastopaikat" />
@@ -432,9 +411,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LaitehallintaModelStoreContainer" CdmEntityContainer="LaitehallintaEntities3">
+        <EntityContainerMapping StorageEntityContainer="LaitehallintaModel1StoreContainer" CdmEntityContainer="LaitehallintaEntities4">
           <EntitySetMapping Name="Henkilot">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Henkilot">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Henkilot">
               <MappingFragment StoreEntitySet="Henkilot">
                 <ScalarProperty Name="Henkilo_uid" ColumnName="Henkilo_uid" />
                 <ScalarProperty Name="Henkilonumero" ColumnName="Henkilonumero" />
@@ -449,7 +428,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Laitetyypit">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Laitetyypit">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Laitetyypit">
               <MappingFragment StoreEntitySet="Laitetyypit">
                 <ScalarProperty Name="Laitetyyppi_uid" ColumnName="Laitetyyppi_uid" />
                 <ScalarProperty Name="Laitetyyppi" ColumnName="Laitetyyppi" />
@@ -459,7 +438,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Laitteet">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Laitteet">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Laitteet">
               <MappingFragment StoreEntitySet="Laitteet">
                 <ScalarProperty Name="Laite_uid" ColumnName="Laite_uid" />
                 <ScalarProperty Name="Laitetyyppi_uid" ColumnName="Laitetyyppi_uid" />
@@ -476,7 +455,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Postinumerot">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Postinumerot">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Postinumerot">
               <MappingFragment StoreEntitySet="Postinumerot">
                 <ScalarProperty Name="Postinumero_uid" ColumnName="Postinumero_uid" />
                 <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
@@ -485,19 +464,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="LaitehallintaModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tapahtumalokit">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Tapahtumalokit">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Tapahtumalokit">
               <MappingFragment StoreEntitySet="Tapahtumalokit">
                 <ScalarProperty Name="Tapahtumaloki_uid" ColumnName="Tapahtumaloki_uid" />
                 <ScalarProperty Name="Paivamaara" ColumnName="Paivamaara" />
@@ -509,7 +477,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tapahtumatyyppit">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Tapahtumatyyppit">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Tapahtumatyyppit">
               <MappingFragment StoreEntitySet="Tapahtumatyyppit">
                 <ScalarProperty Name="Tapahtumatyyppi_uid" ColumnName="Tapahtumatyyppi_uid" />
                 <ScalarProperty Name="Tapahtumatyyppi" ColumnName="Tapahtumatyyppi" />
@@ -519,7 +487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Varastopaikat">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Varastopaikat">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Varastopaikat">
               <MappingFragment StoreEntitySet="Varastopaikat">
                 <ScalarProperty Name="Varastopaikka_uid" ColumnName="Varastopaikka_uid" />
                 <ScalarProperty Name="Varasto_uid" ColumnName="Varasto_uid" />
@@ -529,7 +497,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Varastot">
-            <EntityTypeMapping TypeName="LaitehallintaModel.Varastot">
+            <EntityTypeMapping TypeName="LaitehallintaModel1.Varastot">
               <MappingFragment StoreEntitySet="Varastot">
                 <ScalarProperty Name="Varasto_uid" ColumnName="Varasto_uid" />
                 <ScalarProperty Name="Varastonnimi" ColumnName="Varastonnimi" />

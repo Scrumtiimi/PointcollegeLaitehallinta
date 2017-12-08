@@ -13,10 +13,10 @@ namespace PointcollegeLaitehallinta.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LaitehallintaEntities3 : DbContext
+    public partial class LaitehallintaEntities4 : DbContext
     {
-        public LaitehallintaEntities3()
-            : base("name=LaitehallintaEntities3")
+        public LaitehallintaEntities4()
+            : base("name=LaitehallintaEntities4")
         {
         }
     
@@ -29,7 +29,6 @@ namespace PointcollegeLaitehallinta.Models
         public virtual DbSet<Laitetyypit> Laitetyypit { get; set; }
         public virtual DbSet<Laitteet> Laitteet { get; set; }
         public virtual DbSet<Postinumerot> Postinumerot { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tapahtumalokit> Tapahtumalokit { get; set; }
         public virtual DbSet<Tapahtumatyyppit> Tapahtumatyyppit { get; set; }
         public virtual DbSet<Varastopaikat> Varastopaikat { get; set; }
