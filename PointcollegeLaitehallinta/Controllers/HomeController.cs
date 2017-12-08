@@ -8,10 +8,20 @@ using System.Web.Mvc;
 namespace PointcollegeLaitehallinta.Controllers {
     public class HomeController : Controller {
         public ActionResult Index() {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
-        
+
+        public ActionResult AddLaite() { 
+            return View();
+        }
+        public ActionResult RemoveLaite() {
+            return View();
+        }
+        public ActionResult ModifyLaite() {
+            return View();
+        }
+        public ActionResult GetLaite() {
+            return View();
+        }
     }
 }

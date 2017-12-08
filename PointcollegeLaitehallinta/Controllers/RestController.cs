@@ -40,8 +40,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         }
 
         [Route("")]
-        [HttpPost]
-        
+        [HttpPost]        
         public HttpResponseMessage AddLaite(HttpRequestMessage request, [FromBody] Laitteet laite) {
 
             LaitehallintaEntities4 ent = new LaitehallintaEntities4();

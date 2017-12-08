@@ -344,6 +344,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AddLaite.cshtml" />
+    <Content Include="Views\Home\RemoveLaite.cshtml" />
+    <Content Include="Views\Home\ModifyLaite.cshtml" />
+    <Content Include="Views\Home\GetLaite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -141,7 +141,7 @@ var Footer = React.createClass({
 
 ReactDOM.render(
     <Layout/>, 
-    document.getElementById('welcome')
+    document.getElementById('addlaite')
     
 );
 
