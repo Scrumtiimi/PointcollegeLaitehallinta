@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Script.Serialization;
 
 namespace PointcollegeLaitehallinta.RestControllers
 {
@@ -26,17 +27,41 @@ namespace PointcollegeLaitehallinta.RestControllers
 
             return laitteet;
         }
-        
+
         [Route("{id:int}")]
         [HttpGet]
-        public Laitteet GetLaitteet(int id) {
+        public Laitteet GetLaitteet(int id)
+        {
 
             LaitehallintaEntities4 ent = new LaitehallintaEntities4();
 
             var laite = (from l in ent.Laitteet
                          where l.Laitetyypit.Laitetyyppi == id
                          select l).SingleOrDefault();
-            return (Laitteet)laite;
+            
+
+            return laite;
+        }
+        
+
+        [Route("{id:int}")]
+        [HttpPost]
+        public HttpResponseMessage RemoveLaite(HttpRequestMessage request, int id) {
+
+            LaitehallintaEntities4 ent = new LaitehallintaEntities4();
+
+            try {
+                var laite = (from l in ent.Laitteet
+                            where l.Laitetyypit.Laitetyyppi == id
+                            select l).SingleOrDefault();
+                ent.Laitteet.Remove(laite);
+                ent.SaveChanges();
+                ent.Dispose();
+            } catch(Exception e) {
+                Console.WriteLine("Virhe tuli " + e.Message);
+            }
+
+            return request.CreateResponse(HttpStatusCode.OK);
         }
 
         [Route("")]
