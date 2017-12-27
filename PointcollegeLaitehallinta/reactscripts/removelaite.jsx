@@ -3,31 +3,32 @@
     getInitialState() {
         return {
             findValue: '',
-            data: {}
+            data: []
         }
     },
 
     FindMachineById(findValue) {
-        this.setState({findValue});
-        fetch("http://localhost:2490/api/laitteet/" + findValue)    
-            .then(function (json) {
-                this.setState({data: json.data});
-            })
+        this.setState({findValue});        
     },
 
+    componentDidMount() {
+        fetch("http://localhost:2490/api/laitteet/" + this.state.findValue)    
+            .then(response => response.json())
+            .then(data => this.setState({data: data}));
+    },    
+
     render() {
-        const formdata = this.state.data.map(function(form) {
-            return (
-                <li>{form.kovalevykoko}</li>
-            );
-            
-        });
-        return(
-            
+        const { data } = this.state;
+
+        return (            
             <div>
                 <h2>Tällä sivulla voit etsiä ja poistaa laitteita</h2>
-                <ul>{formdata}</ul>
                 <FindMachine findValue={this.state.findValue} FindMachineById={this.FindMachineById.bind(this)}/>             
+                <ul>
+                    {data.map(d => 
+                        <li>{data.kovalevykoko}</li>
+                    )}    
+                </ul>
             </div>
         );
     }
