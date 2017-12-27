@@ -30,7 +30,7 @@ namespace PointcollegeLaitehallinta.RestControllers
 
         [Route("{id:int}")]
         [HttpGet]
-        public Laitteet GetLaitteet(int id)
+        public Laitteet GetLaitteet(int id) 
         {
 
             LaitehallintaEntities4 ent = new LaitehallintaEntities4();
