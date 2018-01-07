@@ -8,27 +8,34 @@
     },
 
     FindMachineById(findValue) {
-        this.setState({findValue});        
+        fetch("http://localhost:2490/api/laitteet/" + findValue)    
+        .then(response => response.json())
+        .then(json => {
+            this.setState({data: json.Laitetyypit});
+        })
     },
 
-    componentDidMount() {
-        fetch("http://localhost:2490/api/laitteet/" + this.state.findValue)    
-            .then(response => response.json())
-            .then(data => this.setState({data: data}));
-    },    
 
     render() {
-        const { data } = this.state;
+        const getComps = 
+                        Object.keys(this.state.data).map(function(key, index) {
+                            return (
+                                <div className="form-group">
+                                    <label key={index}>{this.state.data[key]}</label>
+                                </div>
+                            )
+                        }, this)
 
+                       
+                        
+    
         return (            
             <div>
                 <h2>Tällä sivulla voit etsiä ja poistaa laitteita</h2>
                 <FindMachine findValue={this.state.findValue} FindMachineById={this.FindMachineById.bind(this)}/>             
-                <ul>
-                    {data.map(d => 
-                        <li>{data.kovalevykoko}</li>
-                    )}    
-                </ul>
+                <form>
+                   {getComps}                   
+                </form>
             </div>
         );
     }
