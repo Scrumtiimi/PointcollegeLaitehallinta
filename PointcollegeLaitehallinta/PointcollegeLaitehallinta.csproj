@@ -237,43 +237,43 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Henkilot.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Laitehallinta.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Laitehallinta.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Laitehallinta.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Laitehallinta.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Laitehallinta.edmx</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Laitetyypit.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Laitteet.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pointcollege.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pointcollege.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pointcollege.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pointcollege.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pointcollege.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pointcollege.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Postinumerot.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tapahtumalokit.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tapahtumatyyppit.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Varastopaikat.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Varastot.cs">
-      <DependentUpon>Laitehallinta.tt</DependentUpon>
+      <DependentUpon>pointcollege.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\RestController.cs" />
@@ -285,15 +285,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Laitehallinta.Context.tt">
+    <Content Include="Models\pointcollege.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Laitehallinta.edmx</DependentUpon>
-      <LastGenOutput>Laitehallinta.Context.cs</LastGenOutput>
+      <DependentUpon>pointcollege.edmx</DependentUpon>
+      <LastGenOutput>pointcollege.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Laitehallinta.tt">
+    <Content Include="Models\pointcollege.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Laitehallinta.edmx</DependentUpon>
-      <LastGenOutput>Laitehallinta.cs</LastGenOutput>
+      <DependentUpon>pointcollege.edmx</DependentUpon>
+      <LastGenOutput>pointcollege.cs</LastGenOutput>
     </Content>
     <Content Include="reactscripts\apicalls.jsx" />
     <Content Include="reactscripts\removelaite.jsx" />
@@ -321,14 +321,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Laitehallinta.edmx">
+    <EntityDeploy Include="Models\pointcollege.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Laitehallinta.Designer.cs</LastGenOutput>
+      <LastGenOutput>pointcollege.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Laitehallinta.edmx.diagram">
-      <DependentUpon>Laitehallinta.edmx</DependentUpon>
+    <Content Include="Models\pointcollege.edmx.diagram">
+      <DependentUpon>pointcollege.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\PointcollegeLaitehallinta20171205082622 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\PointcollegeLaitehallinta20180111075203 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

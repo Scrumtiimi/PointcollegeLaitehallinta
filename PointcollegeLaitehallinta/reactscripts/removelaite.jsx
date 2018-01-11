@@ -8,7 +8,7 @@
     },
 
     FindMachineById(findValue) {
-        fetch("http://localhost:2490/api/laitteet/" + findValue)    
+        fetch("http://pointcollegelaitehallinta20180111075203.azurewebsites.net/api/laitteet/" + findValue)    
         .then(response => response.json())
         .then(json => {
             this.setState({data: json.Laitetyypit});

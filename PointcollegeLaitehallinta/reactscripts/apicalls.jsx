@@ -38,7 +38,7 @@
             Lisatietoja: this.state.Lisatietoja
         }
 
-        fetch("http://localhost:2490/api/laitteet", {
+        fetch("http://pointcollegelaitehallinta20180111075203.azurewebsites.net/api/laitteet/", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
