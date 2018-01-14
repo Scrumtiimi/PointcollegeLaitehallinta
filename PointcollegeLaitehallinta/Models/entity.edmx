@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LaitehallintaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Laitehallinta.dbo.Henkilot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Henkilot">
+          <Key>
+            <PropertyRef Name="Henkilo_uid" />
+          </Key>
+          <Property Name="Henkilo_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Henkilonumero" Type="varchar" MaxLength="100" />
+          <Property Name="Etunimi" Type="varchar" MaxLength="100" />
+          <Property Name="Sukunimi" Type="varchar" MaxLength="100" />
+          <Property Name="Osoite" Type="varchar" MaxLength="30" />
+          <Property Name="Postinumero_uid" Type="uniqueidentifier" />
+          <Property Name="Kayttajanimi" Type="varchar" MaxLength="50" />
+          <Property Name="Salasana" Type="varchar" MaxLength="20" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Laitetyypit">
+          <Key>
+            <PropertyRef Name="Laitetyyppi_uid" />
+          </Key>
+          <Property Name="Laitetyyppi_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Laitetyyppi" Type="int" />
+          <Property Name="Laitetyyppinimi" Type="varchar" MaxLength="100" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Laitteet">
+          <Key>
+            <PropertyRef Name="Laite_uid" />
+          </Key>
+          <Property Name="Laite_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Laitetyyppi_uid" Type="uniqueidentifier" />
+          <Property Name="Laitenimi" Type="varchar" MaxLength="150" />
+          <Property Name="Sarjanumero" Type="varchar" MaxLength="100" />
+          <Property Name="Merkki" Type="varchar" MaxLength="100" />
+          <Property Name="Malli" Type="varchar" MaxLength="100" />
+          <Property Name="Hankitapaiva" Type="datetime" />
+          <Property Name="Muisti" Type="varchar" MaxLength="20" />
+          <Property Name="Kovalevynkoko" Type="varchar" MaxLength="20" />
+          <Property Name="Varastopaikka_uid" Type="uniqueidentifier" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Laitehallinta.dbo.Postinumerot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Postinumerot">
+          <Key>
+            <PropertyRef Name="Postinumero_uid" />
+          </Key>
+          <Property Name="Postinumero_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Postinumero" Type="varchar" MaxLength="10" />
+          <Property Name="Postitoimipaikka" Type="varchar" MaxLength="100" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Laitehallinta.dbo.Tapahtumalokit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tapahtumalokit">
+          <Key>
+            <PropertyRef Name="Tapahtumaloki_uid" />
+          </Key>
+          <Property Name="Tapahtumaloki_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Paivamaara" Type="datetime" />
+          <Property Name="Henkilo_uid" Type="uniqueidentifier" />
+          <Property Name="Laite_uid" Type="uniqueidentifier" />
+          <Property Name="Tapahtuma_uid" Type="uniqueidentifier" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Laitehallinta.dbo.Tapahtumatyyppit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tapahtumatyyppit">
+          <Key>
+            <PropertyRef Name="Tapahtumatyyppi_uid" />
+          </Key>
+          <Property Name="Tapahtumatyyppi_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Tapahtumatyyppi" Type="int" />
+          <Property Name="Tapahtumannimi" Type="varchar" MaxLength="255" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Laitehallinta.dbo.Varastopaikat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Varastopaikat">
+          <Key>
+            <PropertyRef Name="Varastopaikka_uid" />
+          </Key>
+          <Property Name="Varastopaikka_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Varasto_uid" Type="uniqueidentifier" />
+          <Property Name="Varastopaikannimi" Type="varchar" MaxLength="150" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Laitehallinta.dbo.Varastot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Varastot">
+          <Key>
+            <PropertyRef Name="Varasto_uid" />
+          </Key>
+          <Property Name="Varasto_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Varastonnimi" Type="varchar" MaxLength="255" />
+          <Property Name="Varastonsijainti_uid" Type="uniqueidentifier" />
+          <Property Name="Lisatietoja" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_Laitetyyppi_uid">
+          <End Role="Laitetyypit" Type="Self.Laitetyypit" Multiplicity="0..1" />
+          <End Role="Laitteet" Type="Self.Laitteet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laitetyypit">
+              <PropertyRef Name="Laitetyyppi_uid" />
+            </Principal>
+            <Dependent Role="Laitteet">
+              <PropertyRef Name="Laitetyyppi_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaitehallintaModelStoreContainer">
+          <EntitySet Name="Laitetyypit" EntityType="Self.Laitetyypit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Laitteet" EntityType="Self.Laitteet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Henkilot" EntityType="Self.Henkilot" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Henkilot].[Henkilo_uid] AS [Henkilo_uid], 
+    [Henkilot].[Henkilonumero] AS [Henkilonumero], 
+    [Henkilot].[Etunimi] AS [Etunimi], 
+    [Henkilot].[Sukunimi] AS [Sukunimi], 
+    [Henkilot].[Osoite] AS [Osoite], 
+    [Henkilot].[Postinumero_uid] AS [Postinumero_uid], 
+    [Henkilot].[Kayttajanimi] AS [Kayttajanimi], 
+    [Henkilot].[Salasana] AS [Salasana], 
+    [Henkilot].[Lisatietoja] AS [Lisatietoja]
+    FROM [dbo].[Henkilot] AS [Henkilot]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Postinumerot" EntityType="Self.Postinumerot" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Postinumerot].[Postinumero_uid] AS [Postinumero_uid], 
+    [Postinumerot].[Postinumero] AS [Postinumero], 
+    [Postinumerot].[Postitoimipaikka] AS [Postitoimipaikka], 
+    [Postinumerot].[Lisatietoja] AS [Lisatietoja]
+    FROM [dbo].[Postinumerot] AS [Postinumerot]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tapahtumalokit" EntityType="Self.Tapahtumalokit" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tapahtumalokit].[Tapahtumaloki_uid] AS [Tapahtumaloki_uid], 
+    [Tapahtumalokit].[Paivamaara] AS [Paivamaara], 
+    [Tapahtumalokit].[Henkilo_uid] AS [Henkilo_uid], 
+    [Tapahtumalokit].[Laite_uid] AS [Laite_uid], 
+    [Tapahtumalokit].[Tapahtuma_uid] AS [Tapahtuma_uid], 
+    [Tapahtumalokit].[Lisatietoja] AS [Lisatietoja]
+    FROM [dbo].[Tapahtumalokit] AS [Tapahtumalokit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tapahtumatyyppit" EntityType="Self.Tapahtumatyyppit" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tapahtumatyyppit].[Tapahtumatyyppi_uid] AS [Tapahtumatyyppi_uid], 
+    [Tapahtumatyyppit].[Tapahtumatyyppi] AS [Tapahtumatyyppi], 
+    [Tapahtumatyyppit].[Tapahtumannimi] AS [Tapahtumannimi], 
+    [Tapahtumatyyppit].[Lisatietoja] AS [Lisatietoja]
+    FROM [dbo].[Tapahtumatyyppit] AS [Tapahtumatyyppit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Varastopaikat" EntityType="Self.Varastopaikat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Varastopaikat].[Varastopaikka_uid] AS [Varastopaikka_uid], 
+    [Varastopaikat].[Varasto_uid] AS [Varasto_uid], 
+    [Varastopaikat].[Varastopaikannimi] AS [Varastopaikannimi], 
+    [Varastopaikat].[Lisatietoja] AS [Lisatietoja]
+    FROM [dbo].[Varastopaikat] AS [Varastopaikat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Varastot" EntityType="Self.Varastot" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Varastot].[Varasto_uid] AS [Varasto_uid], 
+    [Varastot].[Varastonnimi] AS [Varastonnimi], 
+    [Varastot].[Varastonsijainti_uid] AS [Varastonsijainti_uid], 
+    [Varastot].[Lisatietoja] AS [Lisatietoja]
+    FROM [dbo].[Varastot] AS [Varastot]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Laitetyyppi_uid" Association="Self.FK_Laitetyyppi_uid">
+            <End Role="Laitetyypit" EntitySet="Laitetyypit" />
+            <End Role="Laitteet" EntitySet="Laitteet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LaitehallintaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Laitetyypit">
+          <Key>
+            <PropertyRef Name="Laitetyyppi_uid" />
+          </Key>
+          <Property Name="Laitetyyppi_uid" Type="Guid" Nullable="false" />
+          <Property Name="Laitetyyppi" Type="Int32" />
+          <Property Name="Laitetyyppinimi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Laitteet" Relationship="Self.FK_Laitetyyppi_uid" FromRole="Laitetyypit" ToRole="Laitteet" />
+        </EntityType>
+        <EntityType Name="Laitteet">
+          <Key>
+            <PropertyRef Name="Laite_uid" />
+          </Key>
+          <Property Name="Laite_uid" Type="Guid" Nullable="false" />
+          <Property Name="Laitetyyppi_uid" Type="Guid" />
+          <Property Name="Laitenimi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Sarjanumero" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Merkki" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Malli" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Hankitapaiva" Type="DateTime" Precision="3" />
+          <Property Name="Muisti" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Kovalevynkoko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Varastopaikka_uid" Type="Guid" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Laitetyypit" Relationship="Self.FK_Laitetyyppi_uid" FromRole="Laitteet" ToRole="Laitetyypit" />
+        </EntityType>
+        <EntityType Name="Henkilot">
+          <Key>
+            <PropertyRef Name="Henkilo_uid" />
+          </Key>
+          <Property Name="Henkilo_uid" Type="Guid" Nullable="false" />
+          <Property Name="Henkilonumero" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Etunimi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sukunimi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Osoite" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Postinumero_uid" Type="Guid" />
+          <Property Name="Kayttajanimi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salasana" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Postinumerot">
+          <Key>
+            <PropertyRef Name="Postinumero_uid" />
+          </Key>
+          <Property Name="Postinumero_uid" Type="Guid" Nullable="false" />
+          <Property Name="Postinumero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Postitoimipaikka" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tapahtumalokit">
+          <Key>
+            <PropertyRef Name="Tapahtumaloki_uid" />
+          </Key>
+          <Property Name="Tapahtumaloki_uid" Type="Guid" Nullable="false" />
+          <Property Name="Paivamaara" Type="DateTime" Precision="3" />
+          <Property Name="Henkilo_uid" Type="Guid" />
+          <Property Name="Laite_uid" Type="Guid" />
+          <Property Name="Tapahtuma_uid" Type="Guid" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tapahtumatyyppit">
+          <Key>
+            <PropertyRef Name="Tapahtumatyyppi_uid" />
+          </Key>
+          <Property Name="Tapahtumatyyppi_uid" Type="Guid" Nullable="false" />
+          <Property Name="Tapahtumatyyppi" Type="Int32" />
+          <Property Name="Tapahtumannimi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Varastopaikat">
+          <Key>
+            <PropertyRef Name="Varastopaikka_uid" />
+          </Key>
+          <Property Name="Varastopaikka_uid" Type="Guid" Nullable="false" />
+          <Property Name="Varasto_uid" Type="Guid" />
+          <Property Name="Varastopaikannimi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Varastot">
+          <Key>
+            <PropertyRef Name="Varasto_uid" />
+          </Key>
+          <Property Name="Varasto_uid" Type="Guid" Nullable="false" />
+          <Property Name="Varastonnimi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Varastonsijainti_uid" Type="Guid" />
+          <Property Name="Lisatietoja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Laitetyyppi_uid">
+          <End Role="Laitetyypit" Type="Self.Laitetyypit" Multiplicity="0..1" />
+          <End Role="Laitteet" Type="Self.Laitteet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laitetyypit">
+              <PropertyRef Name="Laitetyyppi_uid" />
+            </Principal>
+            <Dependent Role="Laitteet">
+              <PropertyRef Name="Laitetyyppi_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaitehallintaEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Laitetyypit" EntityType="Self.Laitetyypit" />
+          <EntitySet Name="Laitteet" EntityType="Self.Laitteet" />
+          <EntitySet Name="Henkilot" EntityType="Self.Henkilot" />
+          <EntitySet Name="Postinumerot" EntityType="Self.Postinumerot" />
+          <EntitySet Name="Tapahtumalokit" EntityType="Self.Tapahtumalokit" />
+          <EntitySet Name="Tapahtumatyyppit" EntityType="Self.Tapahtumatyyppit" />
+          <EntitySet Name="Varastopaikat" EntityType="Self.Varastopaikat" />
+          <EntitySet Name="Varastot" EntityType="Self.Varastot" />
+          <AssociationSet Name="FK_Laitetyyppi_uid" Association="Self.FK_Laitetyyppi_uid">
+            <End Role="Laitetyypit" EntitySet="Laitetyypit" />
+            <End Role="Laitteet" EntitySet="Laitteet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LaitehallintaModelStoreContainer" CdmEntityContainer="LaitehallintaEntities2">
+          <EntitySetMapping Name="Laitetyypit">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Laitetyypit">
+              <MappingFragment StoreEntitySet="Laitetyypit">
+                <ScalarProperty Name="Laitetyyppi_uid" ColumnName="Laitetyyppi_uid" />
+                <ScalarProperty Name="Laitetyyppi" ColumnName="Laitetyyppi" />
+                <ScalarProperty Name="Laitetyyppinimi" ColumnName="Laitetyyppinimi" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Laitteet">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Laitteet">
+              <MappingFragment StoreEntitySet="Laitteet">
+                <ScalarProperty Name="Laite_uid" ColumnName="Laite_uid" />
+                <ScalarProperty Name="Laitetyyppi_uid" ColumnName="Laitetyyppi_uid" />
+                <ScalarProperty Name="Laitenimi" ColumnName="Laitenimi" />
+                <ScalarProperty Name="Sarjanumero" ColumnName="Sarjanumero" />
+                <ScalarProperty Name="Merkki" ColumnName="Merkki" />
+                <ScalarProperty Name="Malli" ColumnName="Malli" />
+                <ScalarProperty Name="Hankitapaiva" ColumnName="Hankitapaiva" />
+                <ScalarProperty Name="Muisti" ColumnName="Muisti" />
+                <ScalarProperty Name="Kovalevynkoko" ColumnName="Kovalevynkoko" />
+                <ScalarProperty Name="Varastopaikka_uid" ColumnName="Varastopaikka_uid" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Henkilot">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Henkilot">
+              <MappingFragment StoreEntitySet="Henkilot">
+                <ScalarProperty Name="Henkilo_uid" ColumnName="Henkilo_uid" />
+                <ScalarProperty Name="Henkilonumero" ColumnName="Henkilonumero" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+                <ScalarProperty Name="Postinumero_uid" ColumnName="Postinumero_uid" />
+                <ScalarProperty Name="Kayttajanimi" ColumnName="Kayttajanimi" />
+                <ScalarProperty Name="Salasana" ColumnName="Salasana" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postinumerot">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Postinumerot">
+              <MappingFragment StoreEntitySet="Postinumerot">
+                <ScalarProperty Name="Postinumero_uid" ColumnName="Postinumero_uid" />
+                <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
+                <ScalarProperty Name="Postitoimipaikka" ColumnName="Postitoimipaikka" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tapahtumalokit">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Tapahtumalokit">
+              <MappingFragment StoreEntitySet="Tapahtumalokit">
+                <ScalarProperty Name="Tapahtumaloki_uid" ColumnName="Tapahtumaloki_uid" />
+                <ScalarProperty Name="Paivamaara" ColumnName="Paivamaara" />
+                <ScalarProperty Name="Henkilo_uid" ColumnName="Henkilo_uid" />
+                <ScalarProperty Name="Laite_uid" ColumnName="Laite_uid" />
+                <ScalarProperty Name="Tapahtuma_uid" ColumnName="Tapahtuma_uid" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tapahtumatyyppit">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Tapahtumatyyppit">
+              <MappingFragment StoreEntitySet="Tapahtumatyyppit">
+                <ScalarProperty Name="Tapahtumatyyppi_uid" ColumnName="Tapahtumatyyppi_uid" />
+                <ScalarProperty Name="Tapahtumatyyppi" ColumnName="Tapahtumatyyppi" />
+                <ScalarProperty Name="Tapahtumannimi" ColumnName="Tapahtumannimi" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Varastopaikat">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Varastopaikat">
+              <MappingFragment StoreEntitySet="Varastopaikat">
+                <ScalarProperty Name="Varastopaikka_uid" ColumnName="Varastopaikka_uid" />
+                <ScalarProperty Name="Varasto_uid" ColumnName="Varasto_uid" />
+                <ScalarProperty Name="Varastopaikannimi" ColumnName="Varastopaikannimi" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Varastot">
+            <EntityTypeMapping TypeName="LaitehallintaModel.Varastot">
+              <MappingFragment StoreEntitySet="Varastot">
+                <ScalarProperty Name="Varasto_uid" ColumnName="Varasto_uid" />
+                <ScalarProperty Name="Varastonnimi" ColumnName="Varastonnimi" />
+                <ScalarProperty Name="Varastonsijainti_uid" ColumnName="Varastonsijainti_uid" />
+                <ScalarProperty Name="Lisatietoja" ColumnName="Lisatietoja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
