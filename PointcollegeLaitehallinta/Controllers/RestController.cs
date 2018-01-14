@@ -13,14 +13,14 @@ using System.Web.Script.Serialization;
 namespace PointcollegeLaitehallinta.RestControllers
 {
     [RoutePrefix("api/laitteet")]
-    [EnableCors(origins: "https://pointcollegelaitehallinta20180111075203.azurewebsites.net", headers: "*", methods: "*")]
+    //[EnableCors(origins: "http://laitehallintapointcollege.azurewebsites.net", headers: "*", methods: "*")]
     public class RestController : ApiController {
         
         [Route("")]
         [HttpGet]
         public IEnumerable<Laitteet> GetLaitteet() {
 
-            LaitehallintaEntities1 ent = new LaitehallintaEntities1();
+            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
 
             List<Laitteet> laitteet = new List<Laitteet>();
             laitteet = ent.Laitteet.ToList();
@@ -33,7 +33,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         public Laitteet GetLaitteet(int id) 
         {
 
-            LaitehallintaEntities1 ent = new LaitehallintaEntities1();
+            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
 
             var laite = (from l in ent.Laitteet
                          where l.Laitetyypit.Laitetyyppi == id
@@ -48,7 +48,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpPost]
         public HttpResponseMessage RemoveLaite(HttpRequestMessage request, int id) {
 
-            LaitehallintaEntities1 ent = new LaitehallintaEntities1();
+            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
 
             try {
                 var laite = (from l in ent.Laitteet
@@ -68,7 +68,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpPost]        
         public HttpResponseMessage AddLaite(HttpRequestMessage request, [FromBody] Laitteet laite) {
 
-            LaitehallintaEntities1 ent = new LaitehallintaEntities1();
+            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
 
             try {
 
@@ -130,7 +130,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [Route("muutatiedot")]
         [HttpPost]
         public void ModifyLaite([FromBody] Laitteet laite) {
-            LaitehallintaEntities1 ent = new LaitehallintaEntities1();
+            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
 
             Laitteet updateLaite = ent.Laitteet.Single(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
 

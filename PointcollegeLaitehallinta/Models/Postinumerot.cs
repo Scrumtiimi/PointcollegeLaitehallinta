@@ -14,18 +14,9 @@ namespace PointcollegeLaitehallinta.Models
     
     public partial class Postinumerot
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Postinumerot()
-        {
-            this.Henkilot = new HashSet<Henkilot>();
-        }
-    
         public System.Guid Postinumero_uid { get; set; }
         public string Postinumero { get; set; }
         public string Postitoimipaikka { get; set; }
         public string Lisatietoja { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Henkilot> Henkilot { get; set; }
     }
 }

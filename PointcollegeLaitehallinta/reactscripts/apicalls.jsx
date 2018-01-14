@@ -38,7 +38,7 @@
             Lisatietoja: this.state.Lisatietoja
         }
 
-        fetch("http://pointcollegelaitehallinta20180111075203.azurewebsites.net/api/laitteet/", {
+        fetch("http://laitehallintapointcollege.azurewebsites.net/api/laitteet", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -70,7 +70,7 @@
                     </div>
                     <div className="form-group">
                         <label htmlFor="Hankitapaiva">Hankittu</label>
-                        <input type="text" name="Hankitapaiva"  className="form-control" id="Hankitapaiva"  onChange={this.handleChange}/>
+                        <input type="date" name="Hankitapaiva"  className="form-control" id="Hankitapaiva"  onChange={this.handleChange}/>
                     </div>           
                     <div className="form-group">
                         <label htmlFor="Varastopaikat">Varastopaikka</label>

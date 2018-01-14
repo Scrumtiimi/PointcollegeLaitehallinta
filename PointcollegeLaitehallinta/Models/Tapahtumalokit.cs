@@ -20,8 +20,5 @@ namespace PointcollegeLaitehallinta.Models
         public Nullable<System.Guid> Laite_uid { get; set; }
         public Nullable<System.Guid> Tapahtuma_uid { get; set; }
         public string Lisatietoja { get; set; }
-    
-        public virtual Henkilot Henkilot { get; set; }
-        public virtual Laitteet Laitteet { get; set; }
     }
 }
