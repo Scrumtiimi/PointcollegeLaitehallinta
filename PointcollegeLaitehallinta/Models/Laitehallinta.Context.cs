@@ -13,10 +13,10 @@ namespace PointcollegeLaitehallinta.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LaitehallintaEntities2 : DbContext
+    public partial class LaitehallintaEntities : DbContext
     {
-        public LaitehallintaEntities2()
-            : base("name=LaitehallintaEntities2")
+        public LaitehallintaEntities()
+            : base("name=LaitehallintaEntities")
         {
         }
     
@@ -25,10 +25,11 @@ namespace PointcollegeLaitehallinta.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Henkilot> Henkilot { get; set; }
         public virtual DbSet<Laitetyypit> Laitetyypit { get; set; }
         public virtual DbSet<Laitteet> Laitteet { get; set; }
-        public virtual DbSet<Henkilot> Henkilot { get; set; }
         public virtual DbSet<Postinumerot> Postinumerot { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tapahtumalokit> Tapahtumalokit { get; set; }
         public virtual DbSet<Tapahtumatyyppit> Tapahtumatyyppit { get; set; }
         public virtual DbSet<Varastopaikat> Varastopaikat { get; set; }

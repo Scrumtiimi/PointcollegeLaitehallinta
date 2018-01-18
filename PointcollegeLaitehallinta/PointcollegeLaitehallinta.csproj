@@ -236,44 +236,47 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\entity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>entity.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\entity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\entity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>entity.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Henkilot.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Laitehallinta.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Laitehallinta.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Laitehallinta.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Laitehallinta.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Laitehallinta.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Laitetyypit.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Laitteet.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Postinumerot.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tapahtumalokit.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tapahtumatyyppit.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Varastopaikat.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Varastot.cs">
-      <DependentUpon>entity.tt</DependentUpon>
+      <DependentUpon>Laitehallinta.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\RestController.cs" />
@@ -285,15 +288,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\entity.Context.tt">
+    <Content Include="Models\Laitehallinta.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>entity.edmx</DependentUpon>
-      <LastGenOutput>entity.Context.cs</LastGenOutput>
+      <DependentUpon>Laitehallinta.edmx</DependentUpon>
+      <LastGenOutput>Laitehallinta.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\entity.tt">
+    <Content Include="Models\Laitehallinta.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>entity.edmx</DependentUpon>
-      <LastGenOutput>entity.cs</LastGenOutput>
+      <DependentUpon>Laitehallinta.edmx</DependentUpon>
+      <LastGenOutput>Laitehallinta.cs</LastGenOutput>
     </Content>
     <Content Include="reactscripts\apicalls.jsx" />
     <Content Include="reactscripts\getAllMachines.jsx" />
@@ -322,13 +325,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\entity.edmx">
+    <EntityDeploy Include="Models\Laitehallinta.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>entity.Designer.cs</LastGenOutput>
+      <LastGenOutput>Laitehallinta.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\entity.edmx.diagram">
-      <DependentUpon>entity.edmx</DependentUpon>
+    <Content Include="Models\Laitehallinta.edmx.diagram">
+      <DependentUpon>Laitehallinta.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Laitehallinta20180108022820 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\LaitehallintaPointcollege - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\PointcollegeLaitehallinta20171205082622 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\PointcollegeLaitehallinta20180111075203 - Web Deploy.pubxml" />

@@ -1,4 +1,15 @@
-﻿var Get = React.createClass ({
+﻿const styles = {
+
+    float: 'left',
+    background: '#e6ffe6',
+    border: '1px solid blue',
+    margin: '5px',
+    fontSize: 11
+};
+
+
+
+var Get = React.createClass({
 
     getInitialState() {
         return {
@@ -7,7 +18,7 @@
     },
 
     componentWillMount() {
-        fetch("http://localhost:2490/api/laitteet")
+        fetch("http://localhost:2490/api/laitteet/")
         .then(response => response.json())
         .then(json => {
             this.setState({data: json});
@@ -16,50 +27,55 @@
     },
 
     render() {
-        const allPcs = 
-            this.state.data.map(function(key) {
+        
+        const allPcs = this.state.data.map(function(key) {
+
                 return (
-                    <div>
-                        <div className="form-group">
-                            <label key={key.Laite_uid}>Laitenimi: {key.Laitenimi}</label>
-                        </div>
-                        <div className="form-group">
-                            <label  key={key.Laite_uid}>Sarjanumero: {key.Sarjanumero}</label>
-                        </div>
-                        <div className="form-group">
-                            <label key={key.Laite_uid}>Merkki{key.Merkki}</label>
-                        </div>
-                        <div className="form-group">
+                    <table style={styles}>
+
+                        <tr>
+                            <td><label key={key.Laite_uid}>Laitenimi: {key.Laitenimi}</label></td>
+                        </tr>
+                        <tr>
+                            <label key={key.Laite_uid}>Sarjanumero: {key.Sarjanumero}</label>
+                        </tr>
+                        <tr>
+                            <label key={key.Laite_uid}>Merkki: {key.Merkki}</label>
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Malli: {key.Malli}</label>
-                        </div>
-                        <div className="form-group">
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Hankintapäivä: {key.Hankintapaiva}</label>
-                        </div>
-                        <div className="form-group">
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Muisti: {key.Muisti}</label>
-                        </div>
-                        <div className="form-group">
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Kovalevynkoko: {key.Kovalevynkoko}</label>
-                        </div>
-                        <div className="form-group">
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Varastopaikka UID: {key.Varastopaikka_uid}</label>
-                        </div>
-                        <div className="form-group">
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Lisätietoja: {key.Lisatietoja}</label>
-                        </div>
-                        <div className="form-group">
+                        </tr>
+                        <tr>
                             <label key={key.Laite_uid}>Laitetyyppi UID{key.Laitetyyppi_uid}</label>
-                        </div>
-                    </div>
-                )   
+                        </tr>
+
+                    </table>
+                )
             }, this)
 
         return (
             <div>
                 <h1>Alla listattu kaikki laitteet:</h1>
-                <form>
-                    { allPcs }
-                </form>
+
+
+                {allPcs}
+                <div><br/></div>
+                
             </div>
         )
     }

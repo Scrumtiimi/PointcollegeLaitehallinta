@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Matty\source\repos\test\PointcollegeLaitehallinta\PointcollegeLaitehallinta\Models\entity.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Arhi\Source\laiteh\PointcollegeLaitehallinta\PointcollegeLaitehallinta\Models\Laitehallinta.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

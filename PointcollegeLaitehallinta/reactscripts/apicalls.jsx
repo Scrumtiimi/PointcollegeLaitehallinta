@@ -4,7 +4,7 @@
             title: "Lisää laite varastohallintaan",
             data: {
                 Laitenimi: '',
-                Hankitapaiva: '',
+                Hankintapaiva: '',
                 Varastopaikat: '',
                 Sarjanumero: '',
                 Merkki: '',
@@ -29,7 +29,7 @@
         e.preventDefault();
         var data = {
             Laitenimi: this.state.Laitenimi,
-            Hankitapaiva: this.state.Hankitapaiva,
+            Hankintapaiva: this.state.Hankintapaiva,
             Varastopaikat: this.state.Varastopaikat,
             Sarjanumero: this.state.Sarjanumero,
             Merkki: this.state.Merkki,
@@ -38,7 +38,7 @@
             Lisatietoja: this.state.Lisatietoja
         }
 
-        fetch("http://laitehallintapointcollege.azurewebsites.net/api/laitteet", {
+        fetch("http://localhost:2490/api/laitteet", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -49,7 +49,7 @@
         }).then(function(res) {
             console.log(res.ok);
             Laitenimi.value = "";
-            Hankitapaiva.value = "",
+            Hankintapaiva.value = "",
             Varastopaikat.value = "",
             Sarjanumero.value = "",
             Merkki.value = "",
@@ -69,8 +69,8 @@
                         <input type="text" name="Laitenimi" className="form-control" id="Laitenimi" placeholder="Läppäri" onChange={this.handleChange}/>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Hankitapaiva">Hankittu</label>
-                        <input type="date" name="Hankitapaiva"  className="form-control" id="Hankitapaiva"  onChange={this.handleChange}/>
+                        <label htmlFor="Hankintapaiva">Hankittu</label>
+                        <input type="date" name="Hankintapaiva"  className="form-control" id="Hankintapaiva"  onChange={this.handleChange} />
                     </div>           
                     <div className="form-group">
                         <label htmlFor="Varastopaikat">Varastopaikka</label>

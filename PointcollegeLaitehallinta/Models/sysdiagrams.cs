@@ -12,16 +12,12 @@ namespace PointcollegeLaitehallinta.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tapahtumalokit
+    public partial class sysdiagrams
     {
-        public System.Guid Tapahtumaloki_uid { get; set; }
-        public Nullable<System.DateTime> Paivamaara { get; set; }
-        public Nullable<System.Guid> Henkilo_uid { get; set; }
-        public Nullable<System.Guid> Laite_uid { get; set; }
-        public Nullable<System.Guid> Tapahtuma_uid { get; set; }
-        public string Lisatietoja { get; set; }
-    
-        public virtual Henkilot Henkilot { get; set; }
-        public virtual Laitteet Laitteet { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

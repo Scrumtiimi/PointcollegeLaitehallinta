@@ -14,6 +14,12 @@ namespace PointcollegeLaitehallinta.Models
     
     public partial class Henkilot
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Henkilot()
+        {
+            this.Tapahtumalokit = new HashSet<Tapahtumalokit>();
+        }
+    
         public System.Guid Henkilo_uid { get; set; }
         public string Henkilonumero { get; set; }
         public string Etunimi { get; set; }
@@ -23,5 +29,9 @@ namespace PointcollegeLaitehallinta.Models
         public string Kayttajanimi { get; set; }
         public string Salasana { get; set; }
         public string Lisatietoja { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tapahtumalokit> Tapahtumalokit { get; set; }
+        public virtual Postinumerot Postinumerot { get; set; }
     }
 }

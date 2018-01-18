@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using PointcollegeLaitehallinta.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,14 +14,14 @@ using System.Web.Script.Serialization;
 namespace PointcollegeLaitehallinta.RestControllers
 {
     [RoutePrefix("api/laitteet")]
-    //[EnableCors(origins: "http://laitehallintapointcollege.azurewebsites.net", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:2490/api", headers: "*", methods: "*")]
     public class RestController : ApiController {
         
         [Route("")]
         [HttpGet]
         public IEnumerable<Laitteet> GetLaitteet() {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities ent = new LaitehallintaEntities();
 
             List<Laitteet> laitteet = new List<Laitteet>();
             laitteet = ent.Laitteet.ToList();
@@ -28,12 +29,14 @@ namespace PointcollegeLaitehallinta.RestControllers
             return laitteet;
         }
 
+ //       CultureInfo fiFi = new CultureInfo("fi-Fi");
+
         [Route("{id:int}")]
         [HttpGet]
         public Laitteet GetLaitteet(int id) 
         {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities ent = new LaitehallintaEntities();
 
             var laite = (from l in ent.Laitteet
                          where l.Laitetyypit.Laitetyyppi == id
@@ -48,7 +51,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpPost]
         public HttpResponseMessage RemoveLaite(HttpRequestMessage request, int id) {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities ent = new LaitehallintaEntities();
 
             try {
                 var laite = (from l in ent.Laitteet
@@ -68,7 +71,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [HttpPost]        
         public HttpResponseMessage AddLaite(HttpRequestMessage request, [FromBody] Laitteet laite) {
 
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities ent = new LaitehallintaEntities();
 
             try {
 
@@ -87,7 +90,7 @@ namespace PointcollegeLaitehallinta.RestControllers
                     newLaite.Sarjanumero = laite.Sarjanumero;
                     newLaite.Merkki = laite.Merkki;
                     newLaite.Malli = laite.Malli;
-                    newLaite.Hankitapaiva = laite.Hankitapaiva;
+                    newLaite.Hankintapaiva = laite.Hankintapaiva;
                     newLaite.Muisti = laite.Muisti;
                     newLaite.Kovalevynkoko = laite.Kovalevynkoko;
                     newLaite.Varastopaikka_uid = LaiteVarastopaikkaGUID;
@@ -130,7 +133,7 @@ namespace PointcollegeLaitehallinta.RestControllers
         [Route("muutatiedot")]
         [HttpPost]
         public void ModifyLaite([FromBody] Laitteet laite) {
-            LaitehallintaEntities2 ent = new LaitehallintaEntities2();
+            LaitehallintaEntities ent = new LaitehallintaEntities();
 
             Laitteet updateLaite = ent.Laitteet.Single(l => l.Laitetyypit.Laitetyyppi == laite.Laitetyypit.Laitetyyppi);
 
